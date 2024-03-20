@@ -1,0 +1,21 @@
+
+.chart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+    .chart-container {
+        flex-direction: column;
+    }
+
+    .chart-container div {
+        width: 100%;
+        height: auto;
+    }
+}
