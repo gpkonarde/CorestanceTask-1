@@ -1,0 +1,20 @@
+.mainbody{
+    background-color: aliceblue;
+    text-align: center;
+
+}
+.giveflex{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.charts{
+    padding: 5px;
+    border: 2px solid rgb(57, 159, 255);
+    margin: 20px;
+    width: 600px;
+    border-radius: 20px;
+}
