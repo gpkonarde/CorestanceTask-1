@@ -6,25 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task-1</title>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    
-    
-
-    
+    <link rel="stylesheet" href="index.html">
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
-<body>
-    <div id="chart_div" style="width: 900px; height: 500px;"></div>
-    <div id="curve_chart" style="width: 900px; height: 500px"></div>
-    <div id="barchart_material" style="width: 900px; height: 500px"></div>
-    <div id="piechart" style="width: 900px; height: 500px"></div>
-    <div id="piechart2" style="width: 900px; height: 500px"></div>
-    <div id="donutchart" style="width: 900px; height: 500px"></div>
+<body class="mainbody">
+    <h1 style="border-radius: 10px; background-color: rgb(57, 159, 255);"> CHARTS </h1>
+    <div class="giveflex">
+        <div id="chart_div" style="width: 600px; height: 500px;" class="charts"></div>
+        <div id="curve_chart" style="width: 600px; height: 500px" class="charts"></div>
+        <div id="barchart_material" style="width: 600px; height: 500px" class="charts"></div>
+        <div id="piechart" style="width: 600px; height: 500px" class="charts"></div>
+        <div id="piechart2" style="width: 600px; height: 500px" class="charts"></div>
+        <div id="donutchart" style="width: 600px; height: 500px" class="charts"></div>
+
+    </div>
 
 </body>
 
 
-<script type="text/javascript">
+<script type="text/javascript" >
     google.charts.load('current', { 'packages': ['corechart'] });
     google.charts.setOnLoadCallback(drawChart);
 
@@ -79,7 +81,7 @@
 </script>
 
 
-<script type="text/javascript">
+<script type="text/javascript" >
     google.charts.load('current', { 'packages': ['bar'] });
     google.charts.setOnLoadCallback(drawChart);
 
@@ -108,7 +110,7 @@
 
 
 
-<script type="text/javascript">
+<script type="text/javascript" >
     google.charts.load('current', { 'packages': ['corechart'] });
     google.charts.setOnLoadCallback(drawChart);
 
@@ -135,7 +137,7 @@
 </script>
 
 
-<script type="text/javascript">
+<script type="text/javascript" >
     google.charts.load("current", { packages: ["corechart"] });
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
@@ -168,7 +170,7 @@
 </script>
 
 
-<script type="text/javascript">
+<script type="text/javascript" >
     google.charts.load("current", { packages: ["corechart"] });
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
@@ -190,5 +192,7 @@
         chart.draw(data, options);
     }
 </script>
+
+
 
 </html>
