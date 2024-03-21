@@ -13,8 +13,8 @@
 
 <body class="mainbody">
 
-    
-    <h1 style="border-radius: 10px; background-color: rgb(242, 242, 242);"> CHARTS </h1>
+
+    <h1 style="border-radius: 10px; background-color: #71c4ef; color: #1d1c1c;"> CHARTS </h1>
     <div class="giveflex">
         <div id="chart_div" style="width: 600px; height: 500px;" class="charts"></div>
         <div id="curve_chart" style="width: 600px; height: 500px" class="charts"></div>
@@ -30,7 +30,7 @@
         <div id="chart1_div" style="width: 600px; height: 500px;" class="charts"></div>
         <div id="top_x_div" style="width: 900px; height: 500px;" class="charts"></div>
 
-      
+
 
 
 
@@ -86,9 +86,14 @@
         ]);
 
         var options = {
+            colors: ['#3b3c3d', '#00668c'],
+            backgroundColor: '#fffefb',
             title: 'Company Performance',
             curveType: 'function',
-            legend: { position: 'bottom' }
+            legend: { 
+                position: 'bottom',
+                textStyle: {color: '#313d44'}
+            }
         };
 
         var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
@@ -113,11 +118,14 @@
         ]);
 
         var options = {
+            colors: ['#d4eaf7', '#b6ccd8', '#71c4ef', '#1d1c1c', '#00668c'],
+            backgroundColor: '#fffefb',
+            titleTextStyle: { color: '#1d1c1c' }, // Heading text color
             chart: {
                 title: 'Company Performance',
                 subtitle: 'Sales, Expenses, and Profit: 2014-2017',
             },
-            bars: 'vertical' 
+            bars: 'vertical'
         };
 
         var chart = new google.charts.Bar(document.getElementById('barchart_material'));
@@ -138,19 +146,33 @@
             ['Work', 11],
             ['Eat', 2],
             ['Commute', 2],
+            ['Watch TV', 2],
             ['Sleep', 7]
         ]);
 
         var options = {
-
             title: 'My Daily Activities',
-
-
+            pieSliceBorderColor: '#1d1c1c',
+            colors: ['#deaf7', '#b6ccd8', '#71c4ef', '#1d1c1c', '#00668c'],
+            backgroundColor: '#fffefb', // Background 1
+            pieSliceText: 'percentage',
+            slices: {
+                0: { color: '#d4eaf7' }, // Work
+                1: { color: '#b6ccd8' }, // Eat
+                2: { color: '#71c4ef' }, // Commute
+                3: { color: '#1d1c1c' }, // Watch TV
+                4: { color: '#00668c' } // Sleep
+            },
+            legend: {
+                textStyle: {
+                    color: '#3b3c3d' // Text
+                }
+            }
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
-        chart.draw(data, google.charts.Bar.convertOptions(options));
+        chart.draw(data, options);
     }
 </script>
 
@@ -175,6 +197,10 @@
             title: 'Indian Language Use',
             legend: 'none',
             pieSliceText: 'label',
+            pieSliceBorderColor: '#00668c',
+            pieSliceTextStyle: { color: '#1d1c1c' },
+            colors: ['#d4eaf7', '#b6ccd8', '#71c4ef', '#1d1c1c', '#00668c'],
+            backgroundColor: '#fffefb',
             slices: {
                 4: { offset: 0.2 },
                 12: { offset: 0.3 },
@@ -193,6 +219,7 @@
 
     google.charts.load("current", { packages: ["corechart"] });
     google.charts.setOnLoadCallback(drawChart);
+
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
             ['Task', 'Hours per Day'],
@@ -206,6 +233,14 @@
         var options = {
             title: 'My Daily Activities',
             pieHole: 0.4,
+            pieSliceBorderColor: '#1d1c1c',
+            colors: ['#d7ebf8', '#b6ccd8', '#71c4ef', '#1d1c1c', '#00668c'], // Primary, Secondary, Accent, Shadow 1, Shadow 2
+            backgroundColor: '#fffefb', // Background 1
+            legend: {
+                textStyle: {
+                    color: '#3b3c3d' // Text
+                }
+            }
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
@@ -230,6 +265,7 @@
         ]);
 
         var options = {
+            colors: ['#71c4ef', '#00668c'],
             title: 'Chess opening moves',
             width: 900,
             legend: { position: 'none' },
@@ -278,7 +314,11 @@
         var colChartDiff = new google.visualization.ColumnChart(document.getElementById('colchart_diff'));
 
 
-        var options = { legend: { position: 'top' } };
+        var options = {
+            colors: ['#00668c'],
+            backgroundColor: '#fffefb',
+            legend: { position: 'top' }
+        };
 
         colChartBefore.draw(oldData, options);
         colChartAfter.draw(newData, options);
@@ -291,7 +331,7 @@
 
 <script type="text/javascript">
 
-    
+
     google.charts.load('current', { 'packages': ['corechart'] });
     google.charts.setOnLoadCallback(drawVisualization);
 
@@ -307,6 +347,8 @@
 
         var options = {
             title: 'Monthly Coffee Production by Country',
+            colors: ['#d4eaf7', '#b6ccd8', '#71c4ef', '#00668c'],
+            backgroundColor: '#fffefb',
             vAxis: { title: 'Cups' },
             hAxis: { title: 'Month' },
             seriesType: 'bars',
@@ -317,4 +359,5 @@
         chart.draw(data, options);
     }
 </script>
+
 </html>
