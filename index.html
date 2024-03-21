@@ -20,6 +20,8 @@
         <div id="piechart" style="width: 600px; height: 500px" class="charts"></div>
         <div id="piechart2" style="width: 600px; height: 500px" class="charts"></div>
         <div id="donutchart" style="width: 600px; height: 500px" class="charts"></div>
+        <div id="top_x_div" style="width: 600px; height: 500px;" class="charts"></div>
+        <div id="chart1_div" style="width: 600px; height: 500px;" class="charts"></div>
 
     </div>
 
@@ -192,6 +194,107 @@
         chart.draw(data, options);
     }
 </script>
+
+<script type="text/javascript">
+    google.charts.load('current', {'packages':['bar']});
+    google.charts.setOnLoadCallback(drawStuff);
+
+    function drawStuff() {
+      var data = new google.visualization.arrayToDataTable([
+        ['Opening Move', 'Percentage'],
+        ["King's pawn (e4)", 44],
+        ["Queen's pawn (d4)", 31],
+        ["Knight to King 3 (Nf3)", 12],
+        ["Queen's bishop pawn (c4)", 10],
+        ['Other', 3]
+      ]);
+
+      var options = {
+        title: 'Chess opening moves',
+        width: 900,
+        legend: { position: 'none' },
+        chart: { title: 'Chess opening moves',
+                 subtitle: 'popularity by percentage' },
+        bars: 'horizontal', // Required for Material Bar Charts.
+        axes: {
+          x: {
+            0: { side: 'top', label: 'Percentage'} // Top x-axis.
+          }
+        },
+        bar: { groupWidth: "90%" }
+      };
+
+      var chart = new google.charts.Bar(document.getElementById('top_x_div'));
+      chart.draw(data, options);
+    };
+  </script>
+
+<script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawVisualization);
+
+    function drawVisualization() {
+      // Some raw data (not necessarily accurate)
+      var data = google.visualization.arrayToDataTable([
+        ['Month', 'Munnar', 'Coorg', 'Araku Valley', 'Yercaud', 'Chikmagalur', 'Average'],
+        ['2018',  165,      938,         522,             998,           450,      614.6],
+        ['2019',  135,      1120,        599,             1268,          288,      682],
+        ['2020',  157,      1167,        587,             807,           397,      623],
+        ['2021',  139,      1110,        615,             968,           215,      609.4],
+        ['2022',  136,      691,         629,             1026,          366,      569.6]
+      ]);
+
+      var options = {
+        title : 'Monthly Coffee Production by Country',
+        vAxis: {title: 'Cups'},
+        hAxis: {title: 'Month'},
+        seriesType: 'bars',
+        series: {5: {type: 'line'}}
+      };
+
+      var chart = new google.visualization.ComboChart(document.getElementById('chart1_div'));
+      chart.draw(data, options);
+    }
+  </script>
+
+<script type="text/javascript">
+    google.charts.load('current', {packages:['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var oldData = google.visualization.arrayToDataTable([
+      ['Name', 'Popularity'],
+      ['Cesar', 250],
+      ['Rachel', 4200],
+      ['Patrick', 2900],
+      ['Eric', 8200]
+    ]);
+
+    var newData = google.visualization.arrayToDataTable([
+      ['Name', 'Popularity'],
+      ['Cesar', 370],
+      ['Rachel', 600],
+      ['Patrick', 700],
+      ['Eric', 1500]
+    ]);
+
+    var colChartBefore = new google.visualization.ColumnChart(document.getElementById('colchart_before'));
+    var colChartAfter = new google.visualization.ColumnChart(document.getElementById('colchart_after'));
+    var colChartDiff = new google.visualization.ColumnChart(document.getElementById('colchart_diff'));
+    
+
+    var options = { legend: { position: 'top' } };
+
+    colChartBefore.draw(oldData, options);
+    colChartAfter.draw(newData, options);
+
+    var diffData = colChartDiff.computeDiff(oldData, newData);
+    colChartDiff.draw(diffData, options);
+    barChartDiff.draw(diffData, options);
+  }
+</script>
+<span id='colchart_before' style='width: 450px; height: 250px; display: inline-block'></span>
+<span id='colchart_after' style='width: 450px; height: 250px; display: inline-block'></span>
+<span id='colchart_diff' style='width: 450px; height: 250px; display: inline-block'></span>
 
 
 
